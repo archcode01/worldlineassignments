@@ -3,42 +3,42 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem1/Main.scala">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem1/Main.scala">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem1/Output.txt">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem1/Output.txt">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem2/Main.scala">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem2/Main.scala">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem2/models/Card.scala">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem2/models/Card.scala">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem2/models/Hand.scala">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem2/models/Hand.scala">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem3/Main.scala">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem3/Main.scala">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../../../../Learnings/Technical/Assignments/Worldline/Assignment1/src/main/scala/problem3/Output.txt">
+        <entry key="$PROJECT_DIR$/src/main/scala/problem3/Output.txt">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/build.sbt">
+        <entry key="$PROJECT_DIR$/../../../../../Metro/IdeaProjects/Learnings/worldlineassignments/build.sbt">
           <value>
             <set />
           </value>
