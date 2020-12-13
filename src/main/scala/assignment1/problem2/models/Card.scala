@@ -1,7 +1,7 @@
 /**
   * Copyright (c) Metro Group
   */
-package problem2.models
+package assignment1.problem2.models
 
 import scala.util.{Failure, Success, Try}
 import Card._

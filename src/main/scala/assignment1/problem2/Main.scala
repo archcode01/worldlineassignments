@@ -1,7 +1,7 @@
 /**
   * Copyright (c) Metro Group
   */
-package problem2
+package assignment1.problem2
 
 object Main extends App {
 
