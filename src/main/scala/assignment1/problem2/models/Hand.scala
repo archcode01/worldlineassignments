@@ -22,35 +22,27 @@ object Hand{
     val RoyalFlush = 10
   }
 
-
-
-
-
-
-
-
-
   def findPairs(cards:Seq[Card]): Seq[(Card, Card)] = {
     cards.zip(cards.tail).collect({
       case (x,y) if x.intValue == y.intValue => (x,y)
     })
   }
-
-  def highestValueInSameRank(rank:Int, cards:Seq[Card]) = {
-    rank match {
-      case RoyalFlush => 0
-      case StraightFlush =>
-      case FourOfKind =>
-      case FullHouse =>
-      case Flush =>
-      case Straight =>
-      case ThreeOfAKind =>
-      case TwoPairs =>
-      case OnePair =>
-      case NoValue =>
-
-    }
-  }
+//
+//  def highestValueInSameRank(rank:Int, cards:Seq[Card]) = {
+//    rank match {
+//      case RoyalFlush => 0
+//      case StraightFlush =>
+//      case FourOfKind =>
+//      case FullHouse =>
+//      case Flush =>
+//      case Straight =>
+//      case ThreeOfAKind =>
+//      case TwoPairs =>
+//      case OnePair =>
+//      case NoValue =>
+//
+//    }
+//  }
 
 }
 
@@ -58,12 +50,9 @@ object Hand{
 case class Hand (cards:Seq[Card]){
   require(cards.size == 5)
 
-  val sortedCards = cards.sortWith(Card.sortFunc)
+  val sortedCards: Seq[Card] = cards.sortWith(Card.sortFunc)
 
-  lazy val highestValue = sortedCards.last.intValue
-  lazy val lowestValue = sortedCards(0).intValue
-
-  lazy val rank = if(hasRoyalFlush) {
+  lazy val rank: Int = if(hasRoyalFlush) {
     RoyalFlush
   }else if(hasStraightFlush){
     StraightFlush
@@ -85,8 +74,8 @@ case class Hand (cards:Seq[Card]){
     NoValue
   }
 
-  def hasRoyalFlush = {
-    if(sortedCards(0).intValue == 10 && hasStraightFlush){
+  lazy val hasRoyalFlush: Boolean = {
+    if(sortedCards.head.intValue == 10 && hasStraightFlush){
       true
     }else{
       false
@@ -95,7 +84,7 @@ case class Hand (cards:Seq[Card]){
   }
 
 
-  def hasStraightFlush: Boolean = {
+  lazy val hasStraightFlush: Boolean = {
     if(hasFlush && hasStraight){
       true
     }else{
@@ -104,10 +93,10 @@ case class Hand (cards:Seq[Card]){
 
   }
 
-  def hasFourOfAKind: Boolean = {
+  lazy val hasFourOfAKind: Boolean = {
     val a = findPairs(sortedCards)
     if(a.size == 3 &&
-      (a(0)._1.intValue == a(1)._1.intValue && a
+      (a.head._1.intValue == a(1)._1.intValue && a
       (1)._1.intValue == a(2)._1.intValue)){
       true
     }else{
@@ -116,11 +105,11 @@ case class Hand (cards:Seq[Card]){
   }
 
 
-  def hasFullHouse:Boolean = {
+  lazy val hasFullHouse:Boolean = {
     val a = findPairs(sortedCards)
     if(a.size ==3 &&
-      ((a(0)._1.intValue == a(1)._1.intValue && a(1)._1.intValue != a(2)._1.intValue) ||
-        (a(0)._1.intValue != a(1)._1.intValue && a(1)._1.intValue == a(2)._1.intValue) )
+      ((a.head._1.intValue == a(1)._1.intValue && a(1)._1.intValue != a(2)._1.intValue) ||
+        (a.head._1.intValue != a(1)._1.intValue && a(1)._1.intValue == a(2)._1.intValue) )
     ){
       true
     }else{
@@ -128,89 +117,73 @@ case class Hand (cards:Seq[Card]){
     }
   }
 
-  def highestOfFullHouse = {
-    val a = findPairs(sortedCards)
-    if(a.size ==3 ){
-      if((a(0)._1.intValue == a(1)._1.intValue && a(1)._1.intValue != a(2)._1.intValue)
-        ){
-        true
-      }else if((a(0)._1.intValue != a(1)._1.intValue && a(1)._1.intValue == a(2)._1.intValue) ){
-
-      }
-    }else{
-      0
-    }
-
-
-  }
-
-  def hasFlush: Boolean = {
+  lazy val hasFlush: Boolean = {
     sortedCards.zip(sortedCards.tail).forall(p => {p._1.kind == p._2.kind})
   }
 
-  def hasStraight: Boolean = {
+  lazy val hasStraight: Boolean = {
     sortedCards.zip(sortedCards.tail).forall(p => {p._1.intValue + 1 == p._2.intValue})
   }
 
-  def hasOnePair: Boolean = {
+  lazy val highestInHand: Int = {
+    sortedCards.last.intValue
+  }
+
+  lazy val hasOnePair: Boolean = {
     //    cards.zip(cards.tail).exists(p => {p._1.intValue  == p._2.intValue})
     val a = findPairs(sortedCards)
     if(a.size == 1) true else false
   }
 
-  def highestOfOnePair = {
+  lazy val highestOfOnePair: Int = {
     val a = findPairs(sortedCards)
     if(a.size == 1){
-      a(0)._1.intValue
+      a.head._1.intValue
     }  else {
       0
     }
   }
 
-  def hasTwoPairs: Boolean = {
+  lazy val hasTwoPairs: Boolean = {
     //    cards.zip(cards.tail).exists(p => {p._1.intValue  == p._2.intValue})
     val a = findPairs(sortedCards)
-    if(a.size == 2 && a(0)._1.intValue != a(1)._1.intValue) true else false
+    if(a.size == 2 && a.head._1.intValue != a(1)._1.intValue) true else false
   }
 
-  def highestOfTwoPairs = {
+  lazy val highestOfTwoPairs: Int = {
     val a = findPairs(sortedCards)
-    if(a.size == 2 && a(0)._1.intValue != a(1)._1.intValue) {
-      if(a(0)._1.intValue > a(1)._1.intValue){
-        a(0)._1.intValue
-      }else{
-        a(1)._1.intValue
-      }
+    if(a.size == 2 && a.head._1.intValue != a(1)._1.intValue) {
+      a(1)._1.intValue
     } else{
       0
     }
   }
 
-  def hasThreeOfAKind: Boolean = {
+  lazy val hasThreeOfAKind: Boolean = {
     //    cards.zip(cards.tail).exists(p => {p._1.intValue  == p._2.intValue})
     val a = findPairs(sortedCards)
-    if(a.size == 2 && a(0)._1.intValue == a(1)._1.intValue) true else false
+    if(a.size == 2 && a.head._1.intValue == a(1)._1.intValue) true else false
   }
 
-  def highestOfThreeOfAKind = {
+  lazy val highestOfThreeOfAKind: Int = {
     val a = findPairs(sortedCards)
-    if(a.size == 2 && a(0)._1.intValue == a(1)._1.intValue) a(0)._1.intValue else 0
+    if(a.size == 2 && a.head._1.intValue == a(1)._1.intValue) a.head._1.intValue else 0
 
   }
 
 
-  def highestValueInRank = {
+  lazy val highestValueInRank: Int = {
     rank match {
       case RoyalFlush => 0
-      case StraightFlush => this.highestValue
-      case FourOfKind =>
-      case FullHouse =>
-      case Flush =>
-      case Straight =>
-      case ThreeOfAKind =>
-      case TwoPairs =>
-      case OnePair =>
-      case NoValue =>
+      case StraightFlush => this.highestInHand
+      case FourOfKind => this.highestInHand
+      case FullHouse => this.highestInHand
+      case Flush => this.highestInHand
+      case Straight => this.highestInHand
+      case ThreeOfAKind => this.highestOfThreeOfAKind
+      case TwoPairs => this.highestOfTwoPairs
+      case OnePair => this.highestOfOnePair
+      case NoValue => this.highestInHand
 
     }
   }
@@ -218,33 +191,3 @@ case class Hand (cards:Seq[Card]){
 
 }
 
-
-object Game{
-  def apply(s:String): Game = {
-    val sArr = s.split(" ")
-    Game(Hand(sArr.take(5).toSeq.map(Card.apply)), Hand(sArr.takeRight(5).toSeq.map(Card.apply)))
-  }
-
-  def findWinner(g:Game) = {
-
-  }
-}
-case class Game(player1:Hand, player2:Hand){
-
-  lazy val player1Rank = player1.rank
-  lazy val player2Rank = player2.rank
-
-
-
-  def isPlayer1Winner = {
-    if(player1.rank > player2.rank){
-      true
-    }else if(player1.rank == player2.rank){
-
-    }else{
-      false
-    }
-  }
-
-
-}

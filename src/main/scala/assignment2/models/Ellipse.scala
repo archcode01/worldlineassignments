@@ -7,5 +7,8 @@ case class Ellipse ( override val x: Position, override val y: Position, hDia:In
   override def print: String = {
     s"Ellipse (${x.pos},${y.pos}) diameterH = ${hDia}, diameterV = $vDia"
   }
+//  override def isValid: Boolean = {
+//    x.isValid && y.isValid && (hDia <= x.pos && vDia <=y.pos)
+//  }
 
 }

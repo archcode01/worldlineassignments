@@ -7,5 +7,7 @@ case class Square ( override val x: Position, override val y: Position, width: I
   override def print: String = {
     s"Square (${x.pos},${y.pos}) size=${width}"
   }
-
+//  override def isValid: Boolean = {
+//    x.isValid && y.isValid && (width <= x.pos && width <=y.pos)
+//  }
 }

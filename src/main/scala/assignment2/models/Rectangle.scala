@@ -7,5 +7,7 @@ case class Rectangle  ( override val x: Position, override val y: Position, widt
   override def print: String = {
     s"Rectangle (${x.pos},${y.pos}) width=${width} height=${height}"
   }
-
+//  override def isValid: Boolean = {
+//    x.isValid && y.isValid && (width <= x.pos && height <=y.pos)
+//  }
 }

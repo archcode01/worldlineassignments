@@ -12,4 +12,8 @@ case class TextBox  ( override val x: Position,
     s"Textbox (${x.pos},${y.pos}) width=${width} height=$height text=${"""""""+text.getOrElse("")+"""""""}"
   }
 
+//  override def isValid: Boolean = {
+//    x.isValid && y.isValid && (width <= x.pos && height <=y.pos)
+//  }
+
 }
