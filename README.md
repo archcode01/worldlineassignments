@@ -2,7 +2,7 @@
 
 Worldline UK&I DDU Group - Code Assignment
 
-##Introduction:
+## Introduction:
 This document explains in detail about an Internal Assignment designed by Worldline UK&I DDU Group to test
 various programming skills of an individual. Along with the assignment details it also provides detailed instructions
 that should be followed while executing this assignment.
@@ -24,7 +24,7 @@ If something’s unclear, ask.
 take a lot of time to fix.
 4. Avoid reinventing the wheel, if there are open source libraries / frameworks available which aides in fast
 development please feel free to use them.
-##Problem 1:
+## Problem 1:
 You are given the following information, but you may prefer to do some research for yourself.
 • 1 Jan 1900 was Monday.
 • September, April, June and November had 30 days. All the rest of the months have 31 days.
@@ -33,7 +33,7 @@ You are given the following information, but you may prefer to do some research 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
 
-##Problem 2:
+## Problem 2:
 In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following way:
 • High Card: Highest value card.
 • One Pair: Two cards of the same value.
